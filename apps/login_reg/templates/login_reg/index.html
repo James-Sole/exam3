@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Walcome to Poke Wars!</h1>
+    {% if messages%}
+      <ul class="alert alert-light">
+        {% for message in messages %}
+          <li class="alert alert-danger">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2>Register</h2>
+          <form action="/register" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label>Name: </label>
+              <input class="form-control" type="text" name="name" placeholder="Name">
+            </div>
+            <div class="form-group">
+              <label>Username: </label>
+              <input class="form-control" type="text" name="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+              <label>Email: </label>
+              <input class="form-control" type="text" name="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <label>Password: </label>
+              <input class="form-control" type="password" name="password" placeholder="Password" >
+            </div>
+            <div class="form-group">
+              <label>Password confirmation: </label>
+              <input class="form-control" type="password" name="conf_password" placeholder="Confirmation Password">
+            </div>
+            <div class="form-group">
+              <label>Date of Birth</label>
+              <input class="form-control" type="date" name="birth_date" placeholder="Date of Birth">
+            </div>
+            <input class="btn btn-primary" type="submit" name="reg" value="Register">
+          </form>
+        </div>
+        <div class="col">
+          <h1>Login</h1>
+          <form action="/login" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label>Username: </label>
+              <input class="form-control" type="text" name="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+              <label>Password: </label>
+              <input class="form-control" type="password" name="password" placeholder="Password">
+            </div>
+            <input class="btn btn-primary" type="submit" name="login" value="Login">
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

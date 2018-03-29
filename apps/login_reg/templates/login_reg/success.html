@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <a class="btn btn-danger" href="/logout">logout</a>
+    <h1>Welcome, {{username}}!</h1>
+    <p>{{poke_number}} people poked you!</p>
+    <div>
+    {% for poker in pokers %}
+    <p>{{poker.name}} poked you {{poker.pokes.count}} times.</p>
+    {% endfor %}
+    </div>
+    <h3>Other User's Not on Your Friend's List:</h3>
+    <div>
+      <table class="table">
+        <thead class="table-dark">
+          <th scope="col">Name</th>
+          <th scope="col">Username</th>
+          <th scope="col">Action</th>
+          <th scope="col">Poke History</th>
+          <th scope="col">Action</th>
+        </thead>
+        <tbody>
+          {% for poker in other_pokers %}
+          <tr scope="row">
+            <td>{{poker.name}}</td>
+            <td>{{poker.username}}</td>
+            <td>{{poker.email}}</td>
+            <td>{{poker.pokes.count}} pokes</td>
+            <td><a class="btn btn-primary" href="/poke/{{poker.id}}">poke!</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
